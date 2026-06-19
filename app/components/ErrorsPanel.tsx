@@ -2,7 +2,7 @@
 
 import * as Sentry from "@sentry/nextjs";
 
-import { CheckoutRenderError, PaymentGatewayError } from "@/lib/demo-errors";
+import { CheckoutRenderError, PaymentGatewayError, SearchTimeoutError } from "@/lib/demo-errors";
 import { enrichDemoContext } from "@/lib/sentry-context";
 
 import { Panel } from "./Panel";
@@ -38,6 +38,17 @@ export function ErrorsPanel() {
         hint="DatabaseConnectionError in /api/error (server stack trace)"
         tone="danger"
         onTriggerAction={() => triggerServerError()}
+      />
+
+      <TriggerButton
+        label="Throw search timeout"
+        hint="SearchTimeoutError in the browser (tagged feature=search)"
+        tone="danger"
+        onTriggerAction={async () => {
+          enrichDemoContext("search");
+          const eventId = Sentry.captureException(new SearchTimeoutError());
+          return { ok: true, message: "Search timeout captured", eventId };
+        }}
       />
 
       <TriggerButton

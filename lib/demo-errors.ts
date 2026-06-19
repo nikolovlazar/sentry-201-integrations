@@ -33,6 +33,14 @@ export class PaymentGatewayError extends Error {
   }
 }
 
+/** Thrown in the browser when the product search request exceeds its budget. */
+export class SearchTimeoutError extends Error {
+  constructor(message = "Product search timed out after 3000ms — no results returned") {
+    super(message);
+    this.name = "SearchTimeoutError";
+  }
+}
+
 /** A deliberately unique error so every click creates a brand-new Sentry issue. */
 export class FlakyExperimentError extends Error {
   constructor(public readonly variant: string) {

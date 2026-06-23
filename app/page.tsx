@@ -1,4 +1,5 @@
 import { ErrorsPanel } from "./components/ErrorsPanel";
+import { FeedbackPanel } from "./components/FeedbackPanel";
 import { MetricsPanel } from "./components/MetricsPanel";
 import { PerformancePanel } from "./components/PerformancePanel";
 import { SamplingInspector } from "./components/SamplingInspector";
@@ -23,6 +24,7 @@ export default function ControlCenter() {
 
       <div className="grid grid-cols-1 gap-5 lg:grid-cols-2">
         <ErrorsPanel />
+        <FeedbackPanel />
         <PerformancePanel />
         <MetricsPanel />
         <SamplingInspector />

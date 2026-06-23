@@ -2,7 +2,6 @@ import { ErrorsPanel } from "./components/ErrorsPanel";
 import { FeedbackPanel } from "./components/FeedbackPanel";
 import { MetricsPanel } from "./components/MetricsPanel";
 import { PerformancePanel } from "./components/PerformancePanel";
-import { SamplingInspector } from "./components/SamplingInspector";
 
 export default function ControlCenter() {
   return (
@@ -27,7 +26,6 @@ export default function ControlCenter() {
         <FeedbackPanel />
         <PerformancePanel />
         <MetricsPanel />
-        <SamplingInspector />
       </div>
 
       <footer className="mt-10 text-xs text-zinc-600">

@@ -41,6 +41,14 @@ export class SearchTimeoutError extends Error {
   }
 }
 
+/** Thrown in the browser when the cart's stock count drifts from the warehouse. */
+export class InventorySyncError extends Error {
+  constructor(message = "Inventory desync: cart quantity exceeds available stock for SKU-4471") {
+    super(message);
+    this.name = "InventorySyncError";
+  }
+}
+
 /** A deliberately unique error so every click creates a brand-new Sentry issue. */
 export class FlakyExperimentError extends Error {
   constructor(public readonly variant: string) {

@@ -19,7 +19,7 @@ const DEMO_USERS = [
   { id: "u_4096", username: "alan.turing", email: "alan@example.com", tier: "free" },
 ];
 
-export type DemoFeature = "checkout" | "payments" | "experiments" | "search";
+export type DemoFeature = "checkout" | "payments" | "experiments" | "search" | "inventory";
 
 export function enrichDemoContext(feature: DemoFeature) {
   // Pick a "current user" (rotates so successive demos look like different people).

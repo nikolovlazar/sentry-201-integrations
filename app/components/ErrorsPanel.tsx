@@ -2,7 +2,12 @@
 
 import * as Sentry from "@sentry/nextjs";
 
-import { CheckoutRenderError, PaymentGatewayError, SearchTimeoutError } from "@/lib/demo-errors";
+import {
+  CheckoutRenderError,
+  InventorySyncError,
+  PaymentGatewayError,
+  SearchTimeoutError,
+} from "@/lib/demo-errors";
 import { enrichDemoContext } from "@/lib/sentry-context";
 
 import { Panel } from "./Panel";
@@ -48,6 +53,17 @@ export function ErrorsPanel() {
           enrichDemoContext("search");
           const eventId = Sentry.captureException(new SearchTimeoutError());
           return { ok: true, message: "Search timeout captured", eventId };
+        }}
+      />
+
+      <TriggerButton
+        label="Throw inventory sync error"
+        hint="InventorySyncError in the browser (tagged feature=inventory)"
+        tone="danger"
+        onTriggerAction={async () => {
+          enrichDemoContext("inventory");
+          const eventId = Sentry.captureException(new InventorySyncError());
+          return { ok: true, message: "Inventory sync error captured", eventId };
         }}
       />
 
